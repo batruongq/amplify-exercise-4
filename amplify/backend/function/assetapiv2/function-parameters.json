@@ -1,0 +1,13 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "s3AccessKey",
+      "environmentVariableName": "S3_ACCESS_KEY"
+    },
+    {
+      "cloudFormationParameterName": "s3SecretKey",
+      "environmentVariableName": "S3_SECRET_KEY"
+    }
+  ]
+}
