@@ -5,6 +5,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
+    },
+    "assetapiv2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -15,6 +20,14 @@
         {
           "category": "function",
           "resourceName": "employeeapiv2",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "assetapiv2",
           "attributes": [
             "Name",
             "Arn"

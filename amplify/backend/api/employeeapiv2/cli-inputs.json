@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/assets": {
+      "name": "/assets",
+      "lambdaFunction": "assetapiv2",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

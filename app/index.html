@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>    
+    <input type="file" accept="image/*" id="upload-profile" />
+  </form>
+
+  <script>
+    async function getS3SignedUrl(){
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = {
+          method: 'GET',
+          headers: headers, 
+        };
+        const response = await fetch(`https://3g6cuj6v71.execute-api.us-east-1.amazonaws.com/dev/assets/presignedUrlUpload`,    
+        options);     
+
+        const presignedUrl = await response.json();
+        return presignedUrl
+    }
+
+    async function pushProfilePhotoToS3(presignedUploadUrl, file) {
+      const myHeaders = new Headers({ 'Content-Type': 'image/*' });
+      const response = await fetch(presignedUploadUrl, {
+          method: 'PUT',
+          headers: myHeaders,
+          body: file
+      });
+    }
+
+    async function handleUploadChange(e) {
+      console.log('In here')
+      const data = await getS3SignedUrl();
+
+      console.log('In here getS3SignUrl', data.url)
+      if (data.url) {
+
+        if (e.target.files) {
+          const file = e.target.files[0];
+          // const fileLink = URL.createObjectURL(file);
+
+          // const photoConvertedToBlob = dataURIToBlob(profilePhotoResized);
+          await pushProfilePhotoToS3(data.url, file);
+        }
+      }
+    } 
+
+    document.getElementById('upload-profile').addEventListener('change', (e) => {
+      handleUploadChange(e)
+    })
+  </script>
+</body>
+</html>
