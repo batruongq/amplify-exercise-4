@@ -35,17 +35,11 @@
     }
 
     async function handleUploadChange(e) {
-      console.log('In here')
       const data = await getS3SignedUrl();
 
-      console.log('In here getS3SignUrl', data.url)
       if (data.url) {
-
         if (e.target.files) {
           const file = e.target.files[0];
-          // const fileLink = URL.createObjectURL(file);
-
-          // const photoConvertedToBlob = dataURIToBlob(profilePhotoResized);
           await pushProfilePhotoToS3(data.url, file);
         }
       }

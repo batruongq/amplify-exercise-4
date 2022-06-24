@@ -10,6 +10,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "userapiv2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -28,6 +33,14 @@
         {
           "category": "function",
           "resourceName": "assetapiv2",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "userapiv2",
           "attributes": [
             "Name",
             "Arn"
