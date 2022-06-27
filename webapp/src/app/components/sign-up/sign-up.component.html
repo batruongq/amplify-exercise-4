@@ -5,14 +5,14 @@
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
+        <input matInput formControlName="email" required>
       </mat-form-field>
     </div>
 
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password">
+        <input matInput formControlName="password" type="password" required>
       </mat-form-field>
     </div>
 
@@ -21,6 +21,12 @@
         <mat-label>Phone number</mat-label>
         <input matInput formControlName="phoneNumber">
       </mat-form-field>
+    </div>
+
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
+    <div class="form-actions">
+      <button class="btn" mat-raised-button color="primary">Submit</button>
     </div>
   </form>
 
