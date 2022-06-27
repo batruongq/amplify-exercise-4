@@ -12,12 +12,14 @@
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password" required>
+        <input matInput formControlName="password" required type="password">
       </mat-form-field>
     </div>
 
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
     <div class="form-actions">
-      <button mat-raised-button color="primary">Primary</button>
+      <button class="btn" mat-raised-button color="primary">Submit</button>
     </div>
   </form>
 

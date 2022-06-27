@@ -12,8 +12,10 @@ export class SignUpComponent implements OnInit {
   formSignUp = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl(''),
   });
+
+  errorMessage!: string;
 
   constructor(private router: Router) { }
 
@@ -27,7 +29,7 @@ export class SignUpComponent implements OnInit {
       username: email,
       password,
       attributes: {
-        email: email,
+        email,
         phone_number: phoneNumber
       }
     };
@@ -37,6 +39,9 @@ export class SignUpComponent implements OnInit {
         console.log('Log signUp', data);
         this.router.navigateByUrl(`/verification/${email}`);
       })
-      .catch(err => console.error('Sign up error', err));
+      .catch(err => {
+        console.error('Sign up error', err);
+        this.errorMessage = err.message;
+      });
   }
 }

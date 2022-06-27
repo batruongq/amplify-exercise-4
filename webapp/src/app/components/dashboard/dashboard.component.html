@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<div class="top-bar mat-elevation-z2">
+  <div class="menu-profile">
+    <div class="user-avatar" *ngIf="user.avatarURL">
+      <img [src]="user.avatarURL" alt="">
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>HELLO {{user.username}}</h2>
+</div>
+
+<mat-menu #menu="matMenu">
+  <a routerLink="/edit-profile">Edit Profile</a>
+</mat-menu>

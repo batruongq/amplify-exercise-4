@@ -16,9 +16,17 @@ app-sign-in {
       width: 100%;
     }
 
+    .form-actions {
+      margin-top: 24px;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
     .grp-actions {
       margin-top: 14px;
-      text-align: right;
+      text-align: center;
       text-decoration: underline;
     }
   }

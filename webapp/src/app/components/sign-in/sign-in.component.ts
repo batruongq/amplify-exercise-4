@@ -16,6 +16,8 @@ export class SignInComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
+  errorMessage!: string;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -26,14 +28,18 @@ export class SignInComponent implements OnInit {
 
     const authInfo = {
       username: email,
-      password: password
+      password
     };
 
     Auth.signIn(authInfo)
-      .then(user => {
+      .then((user) => {
         console.log('In login', user);
-        this.router.navigate(['/dashboard'])
+        localStorage.setItem('ex4', JSON.stringify(user));
+        this.router.navigate(['/dashboard']);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      });
   }
 }

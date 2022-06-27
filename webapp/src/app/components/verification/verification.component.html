@@ -5,13 +5,15 @@
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Code</mat-label>
-        <input type="number" matInput formControlName="code" placeholder="Enter the code">
+        <input matInput formControlName="code" placeholder="Enter the code" required>
         <mat-hint>Please enter the verification code that we sent to your email</mat-hint>
       </mat-form-field>
     </div>
 
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
     <div class="form-actions">
-      <button mat-button mat-primary>Verify</button>
+      <button class="btn" mat-raised-button color="primary">Submit</button>
     </div>
   </form>
 </div>

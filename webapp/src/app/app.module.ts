@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -31,13 +33,15 @@ import { VerificationComponent } from './components/verification/verification.co
       { path: 'sign-up', component: SignUpComponent},
       { path: 'verification/:username', component: VerificationComponent},
       { path: 'dashboard', component: DashboardComponent},
-      { path: 'profile', component: DashboardComponent},
+      { path: 'edit-profile', component: UserProfileComponent},
       { path: '**', redirectTo: '/sign-in' }
     ]),
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule
   ],
