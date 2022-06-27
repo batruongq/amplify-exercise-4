@@ -35,7 +35,12 @@
         },
         "amplifyexercise4PostConfirmation": {
           "deploymentBucketName": "amplify-amplifyexercise4-dev-101422-deployment",
-          "s3Key": "amplify-builds/amplifyexercise4PostConfirmation-6664756c5544526d4e38-build.zip"
+          "s3Key": "amplify-builds/amplifyexercise4PostConfirmation-774e30507275446e6136-build.zip",
+          "dbHost": "queenie.db.elephantsql.com",
+          "dbName": "krclxzgk",
+          "dbPassword": "WdL01QuPvrAsA-475CIPGcH4D7naUO80",
+          "dbPort": "5432",
+          "dbUser": "krclxzgk"
         },
         "amplifyexercise4PreSignup": {
           "deploymentBucketName": "amplify-amplifyexercise4-dev-101422-deployment",

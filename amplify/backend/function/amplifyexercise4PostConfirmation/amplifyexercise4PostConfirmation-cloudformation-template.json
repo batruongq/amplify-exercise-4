@@ -43,6 +43,21 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "dbHost": {
+      "Type": "String"
+    },
+    "dbName": {
+      "Type": "String"
+    },
+    "dbPassword": {
+      "Type": "String"
+    },
+    "dbPort": {
+      "Type": "String"
+    },
+    "dbUser": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -95,6 +110,21 @@
             },
             "GROUP": {
               "Ref": "GROUP"
+            },
+            "DB_HOST": {
+              "Ref": "dbHost"
+            },
+            "DB_NAME": {
+              "Ref": "dbName"
+            },
+            "DB_PASSWORD": {
+              "Ref": "dbPassword"
+            },
+            "DB_PORT": {
+              "Ref": "dbPort"
+            },
+            "DB_USER": {
+              "Ref": "dbUser"
             }
           }
         },
