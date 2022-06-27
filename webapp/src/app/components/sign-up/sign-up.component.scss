@@ -1,0 +1,33 @@
+app-sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .container {
+    width: 600px;
+    padding: 60px 80px;
+
+    .title {
+      text-align: center;
+    }
+
+    .form-field {
+      width: 100%;
+    }
+
+    .form-actions {
+      margin-top: 24px;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    .grp-actions {
+      margin-top: 14px;
+      text-align: right;
+      text-decoration: underline;
+    }
+  }
+}

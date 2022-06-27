@@ -1,0 +1,29 @@
+<div class="container mat-elevation-z8">
+  <h2 class="title">Sign in</h2>
+
+  <form class="form-sign-in" [formGroup]="formSignIn" (ngSubmit)="signIn()">
+    <div class="form-line">
+      <mat-form-field class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form-line">
+      <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required type="password">
+      </mat-form-field>
+    </div>
+
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
+    <div class="form-actions">
+      <button class="btn" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
+
+  <div class="grp-actions">
+    <a [routerLink]="['/sign-up']" routerLinkActive="link-active" >Register</a>
+  </div>
+</div>
