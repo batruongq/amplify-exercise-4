@@ -1,17 +1,23 @@
 <div class="container mat-elevation-z8">
+  <h2 class="title">Sign in</h2>
+
   <form class="form-sign-in" [formGroup]="formSignIn">
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
+        <input matInput formControlName="email" required>
       </mat-form-field>
     </div>
 
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password">
+        <input matInput formControlName="password" required>
       </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button mat-primary>Login</button>
     </div>
   </form>
 

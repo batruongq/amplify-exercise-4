@@ -1,1 +1,17 @@
-<p>verification works!</p>
+<div class="container mat-elevation-z8">
+  <h2 class="title">Register</h2>
+
+  <form class="form-verification" [formGroup]="formVerification" (ngSubmit)="verify()">
+    <div class="form-line">
+      <mat-form-field class="form-field">
+        <mat-label>Code</mat-label>
+        <input type="number" matInput formControlName="code" placeholder="Enter the code">
+        <mat-hint>Please enter the verification code that we sent to your email</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button mat-primary>Verify</button>
+    </div>
+  </form>
+</div>

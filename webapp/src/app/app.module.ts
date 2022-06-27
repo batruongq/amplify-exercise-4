@@ -28,7 +28,7 @@ import { VerificationComponent } from './components/verification/verification.co
     RouterModule.forRoot([
       { path: 'sign-in', component: SignInComponent},
       { path: 'sign-up', component: SignUpComponent},
-      { path: 'verify', component: VerificationComponent},
+      { path: 'verification/:username', component: VerificationComponent},
       { path: 'dashboard', component: DashboardComponent},
       { path: 'profile', component: DashboardComponent},
       { path: '**', redirectTo: '/sign-in' }

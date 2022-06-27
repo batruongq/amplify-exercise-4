@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,9 +16,24 @@ export class SignInComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  signIn(): void {
+    const { email, password } = this.formSignIn.value;
+
+    const authInfo = {
+      username: email,
+      password: password
+    };
+
+    Auth.signIn(authInfo)
+      .then(user => {
+        console.log('In login', user);
+        this.router.navigate(['/dashboard'])
+      })
+      .catch(err => console.log(err));
+  }
 }

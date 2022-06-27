@@ -1,5 +1,7 @@
 <div class="container mat-elevation-z8">
-  <form class="form-sign-in" [formGroup]="formSignUp">
+  <h2 class="title">Register</h2>
+
+  <form class="form-sign-in" [formGroup]="formSignUp" (ngSubmit)="signUp()">
     <div class="form-line">
       <mat-form-field class="form-field">
         <mat-label>Email</mat-label>
@@ -11,6 +13,13 @@
       <mat-form-field class="form-field">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password">
+      </mat-form-field>
+    </div>
+
+    <div class="form-line">
+      <mat-form-field class="form-field">
+        <mat-label>Phone number</mat-label>
+        <input matInput formControlName="phoneNumber">
       </mat-form-field>
     </div>
   </form>
