@@ -1,0 +1,17 @@
+{
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "amplifyexercise4",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "angular",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist/webapp",
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "ng serve"
+    }
+  }
+}
