@@ -26,60 +26,36 @@ app.use(function(req, res, next) {
 });
 
 
-/**********************
- * Example get method *
- **********************/
+ app.get('/users/presignedUrlUpload', function(req, res) {
+  const presignedURL = s3.getSignedUrl('putObject', {
+      Bucket: 'userapiv2',
+      Key: 'avatar',
+      Expires: 200,
+      ContentType: 'image/*'
+  });
 
-app.get('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  res.json({
+    url: presignedURL
+  })
 });
-
-app.get('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
-
-/****************************
-* Example post method *
-****************************/
-
-app.post('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-app.post('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example put method *
-****************************/
 
 app.put('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+  const user = req.body;
+  const id = req.params.id;
 
-app.put('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+  const query = `UPDATE tblUsers SET avatarUrl = '${user.avatarUrl}' WHERE id = ${id};`;
 
-/****************************
-* Example delete method *
-****************************/
+  try {
+    await client.query(query)
 
-app.delete('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+    res.json({
+      message: 'Update successfully'
+    })
+  } catch(err) {
+    res.json(err)
+  }
 
-app.delete('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+  client.end
 });
 
 app.listen(3000, function() {
