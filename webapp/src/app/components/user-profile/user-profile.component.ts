@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
     };
 
     const response =
-      await fetch(`https://3g6cuj6v71.execute-api.us-east-1.amazonaws.com/dev/assets/presignedUrlUpload`, options);
+      await fetch(`https://3g6cuj6v71.execute-api.us-east-1.amazonaws.com/dev/users/presignedUrlUpload`, options);
 
     const presignedUrl = await response.json();
 
@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   async pushPhotoToS3(presignedUploadUrl: string, file: File): Promise<any> {
-    const headers = new Headers({ 'Content-Type': 'image/*' });
+    const headers = new Headers({ 'Content-Type': file.type });
 
     return await fetch(presignedUploadUrl, {
         method: 'PUT',
@@ -39,14 +39,18 @@ export class UserProfileComponent implements OnInit {
   }
 
   async handleUploadChange(e: any): Promise<void> {
-    const data = await this.getS3SignedUrl();
+    try {
+      const data = await this.getS3SignedUrl();
 
-    if (data.url) {
-      if (e.target.files) {
-        const file = e.target.files[0];
-        const result = await this.pushPhotoToS3(data.url, file);
-        console.log('LOG ME', result);
+      if (data.url) {
+        if (e.target.files) {
+          const file = e.target.files[0];
+          const result = await this.pushPhotoToS3(data.url, file);
+          console.log('LOG ME', result);
+        }
       }
+    } catch (err: any) {
+      console.error('ERROR UPLOAD', err.message);
     }
   }
 }

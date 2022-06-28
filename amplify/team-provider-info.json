@@ -31,11 +31,13 @@
         },
         "userapiv2": {
           "deploymentBucketName": "amplify-amplifyexercise4-dev-101422-deployment",
-          "s3Key": "amplify-builds/userapiv2-47587231794338563054-build.zip"
+          "s3Key": "amplify-builds/userapiv2-344750622f6754385635-build.zip",
+          "s3AccessKey": "AKIAW5NBRP3DYNDZIWFE",
+          "s3SecretKey": "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"
         },
         "amplifyexercise4PostConfirmation": {
           "deploymentBucketName": "amplify-amplifyexercise4-dev-101422-deployment",
-          "s3Key": "amplify-builds/amplifyexercise4PostConfirmation-3345625846496c6f7a5a-build.zip",
+          "s3Key": "amplify-builds/amplifyexercise4PostConfirmation-6732635a45362b4b494c-build.zip",
           "dbHost": "queenie.db.elephantsql.com",
           "dbName": "krclxzgk",
           "dbPassword": "WdL01QuPvrAsA-475CIPGcH4D7naUO80",
