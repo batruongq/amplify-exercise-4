@@ -12,16 +12,11 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const AWS = require('aws-sdk');
 
-const s3 = new AWS.S3({
-  signatureVersion: 'v4'
-});
-const credentials = {
-  accessKeyId: process.env.S3_ACCESS_KEY,
-  secretAccessKey : process.env.S3_SECRET_KEY
-};
-AWS.config.update({credentials: credentials});
+const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
+const { PutObjectCommand, S3Client } = require("@aws-sdk/client-s3");
+
+const s3Client = new S3Client({ region: 'us-east-1' });
 
 // declare a new express app
 const app = express()
@@ -36,12 +31,15 @@ app.use(function(req, res, next) {
 });
 
 
- app.get('/users/presignedUrlUpload', function(req, res) {
-  const presignedURL = s3.getSignedUrl('putObject', {
-      Bucket: 'userapiv2',
-      Key: 'avatar',
-      Expires: 200,
-      ContentType: 'image/*'
+ app.get('/users/presignedUrlUpload', async function(req, res) {
+  const bucketParams = {
+    Bucket: 'userapiv2',
+    Key: 'avatar/',
+  };
+
+  const command = new PutObjectCommand(bucketParams);
+  const presignedURL = await getSignedUrl(s3Client, command, {
+    expiresIn: 3600,
   });
 
   res.json({

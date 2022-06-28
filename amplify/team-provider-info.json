@@ -31,7 +31,7 @@
         },
         "userapiv2": {
           "deploymentBucketName": "amplify-amplifyexercise4-dev-101422-deployment",
-          "s3Key": "amplify-builds/userapiv2-344750622f6754385635-build.zip",
+          "s3Key": "amplify-builds/userapiv2-5244314f503553712f35-build.zip",
           "s3AccessKey": "AKIAW5NBRP3DYNDZIWFE",
           "s3SecretKey": "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"
         },
