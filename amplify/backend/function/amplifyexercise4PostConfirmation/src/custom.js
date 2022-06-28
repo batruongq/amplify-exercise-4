@@ -26,11 +26,8 @@ exports.handler = async (event, context) => {
     try {
       await client.query(query)
   
-      res.json({
-        message: 'Add employee successfully'
-      })
     } catch(err) {
-      res.json(err)
+      console.log('Error: Insert to database get error')
     }
   
     client.end

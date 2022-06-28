@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,6 +39,7 @@ import { VerificationComponent } from './components/verification/verification.co
       { path: '**', redirectTo: '/sign-in' }
     ]),
     BrowserAnimationsModule,
+    HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
